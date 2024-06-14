@@ -69,16 +69,40 @@ tabela6951 <- read_excel("D:/Armazenamento/VBP_por_tipo/tabela6951.xlsx",
   tidyr::fill(cod, municipio)
 
 tabela6951 |> dplyr::glimpse()
-## Equinos (animais grandes)
+## (animais grandes) 
+# (6921)
 tabela6921 <- read_excel("D:/Armazenamento/VBP_por_tipo/tabela6921.xlsx", 
                          skip = 5) |>
   janitor::clean_names() |>
   tidyr::fill(cod, municipio)
 
-tabela6951 |> dplyr::glimpse()
+tabela6921 |> dplyr::glimpse()
 
+# 6910
+tabela6910 <- read_excel("D:/Armazenamento/VBP_por_tipo/tabela6910.xlsx", 
+                         skip = 5) |>
+  janitor::clean_names() |>
+  tidyr::fill(cod, municipio)
 
-## Coelhos (animais médios)
+tabela6910 |> dplyr::glimpse()
+# 6912
+tabela6912 <- read_excel("D:/Armazenamento/VBP_por_tipo/tabela6912.xlsx", 
+                         skip = 5) |>
+  janitor::clean_names() |>
+  tidyr::fill(cod, municipio)
+
+tabela6912 |> dplyr::glimpse()
+
+# 6918
+tabela6918 <- read_excel("D:/Armazenamento/VBP_por_tipo/tabela6918.xlsx", 
+                         skip = 5) |>
+  janitor::clean_names() |>
+  tidyr::fill(cod, municipio)
+
+tabela6918 |> dplyr::glimpse()
+
+##  (animais médios)
+### Coelhos 
 tabela6934 <- read_excel("D:/Armazenamento/VBP_por_tipo/tabela6934.xlsx", 
                          skip = 5) |>
   janitor::clean_names() |>
@@ -86,7 +110,34 @@ tabela6934 <- read_excel("D:/Armazenamento/VBP_por_tipo/tabela6934.xlsx",
   tidyr::fill(cod, municipio)
 
 tabela6934 |> dplyr::glimpse()
-## Aquicultura (animais pequenos)
+
+### Caprinos
+tabela6928 <- read_excel("D:/Armazenamento/VBP_por_tipo/tabela6928.xlsx", 
+                         skip = 5) |>
+  janitor::clean_names() |>
+  tidyr::fill(cod, municipio)
+
+tabela6928 |> dplyr::glimpse()
+
+### Ovinos
+tabela6930 <- read_excel("D:/Armazenamento/VBP_por_tipo/tabela6930.xlsx", 
+                         skip = 5) |>
+  janitor::clean_names() |>
+  tidyr::fill(cod, municipio)
+
+tabela6930 |> dplyr::glimpse()
+
+### Suinos
+tabela6926 <- read_excel("D:/Armazenamento/VBP_por_tipo/tabela6926.xlsx", 
+                         skip = 5) |>
+  janitor::clean_names() |>
+  tidyr::fill(cod, municipio)
+
+tabela6926 |> dplyr::glimpse()
+
+##  (animais pequenos)
+
+### Aquicultura
 tabela6937 <- read_excel("D:/Armazenamento/VBP_por_tipo/tabela6937.xlsx", 
                          skip = 6) |>
   janitor::clean_names() |>
@@ -94,6 +145,33 @@ tabela6937 <- read_excel("D:/Armazenamento/VBP_por_tipo/tabela6937.xlsx",
   tidyr::fill(cod, municipio)
 
 tabela6937 |> dplyr::glimpse()
+
+### apicultura 
+tabela6935 <- read_excel("D:/Armazenamento/VBP_por_tipo/tabela6935.xlsx", 
+                         skip = 5) |>
+  janitor::clean_names() |>
+  dplyr::select(-grupos_de_area_total, -grupos_de_atividade_economica) |>
+  tidyr::fill(cod, municipio)
+
+tabela6935 |> dplyr::glimpse()
+
+### sericicultura
+tabela6936 <- read_excel("D:/Armazenamento/VBP_por_tipo/tabela6936.xlsx", 
+                         skip = 5) |>
+  janitor::clean_names() |>
+  dplyr::select(-grupos_de_area_total, -grupos_de_atividade_economica) |>
+  tidyr::fill(cod, municipio)
+
+tabela6936 |> dplyr::glimpse()
+
+### ranicultura
+tabela6939 <- read_excel("D:/Armazenamento/VBP_por_tipo/tabela6939.xlsx", 
+                         skip = 5) |>
+  janitor::clean_names() |>
+  dplyr::select(-grupos_de_area_total, -grupos_de_atividade_economica) |>
+  tidyr::fill(cod, municipio)
+
+tabela6939 |> dplyr::glimpse()
 
 ## Aves
 tabela6941 <- read_excel("D:/Armazenamento/VBP_por_tipo/tabela6941.xlsx", 
@@ -385,28 +463,90 @@ tabela6951 <- tabela6951 |>
 
 tabela6951 |> dplyr::glimpse()
 
-## Equinos (animais grandes)----
+## (animais grandes)----
+### Equinos
 tabela6921 <- tabela6921 |>
   dplyr::mutate(total = as.numeric(total),
                 cod = as.numeric(cod)) |>
-  dplyr::rename(animais_grandes = total,
+  dplyr::rename(animais_grandes_Equinos = total,
                 code_muni = cod)|>
-  dplyr::select(code_muni, animais_grandes)
+  dplyr::select(code_muni, animais_grandes_Equinos)
   
 tabela6921 |> dplyr::glimpse()
 
-## Coelhos (animais médios) ----
+### Bovinos
+tabela6910 <- tabela6910 |>
+  dplyr::mutate(total = as.numeric(total),
+                cod = as.numeric(cod)) |>
+  dplyr::rename(animais_grandes_Bovinos = total,
+                code_muni = cod)|>
+  dplyr::select(code_muni, animais_grandes_Bovinos)
+
+tabela6910 |> dplyr::glimpse()
+
+# leite 
+tabela6912 <- tabela6912 |>
+  dplyr::mutate(total = as.numeric(total),
+                cod = as.numeric(cod)) |>
+  dplyr::rename(animais_grandes_Leite = total,
+                code_muni = cod)|>
+  dplyr::select(code_muni, animais_grandes_Leite)
+
+tabela6912 |> dplyr::glimpse()
+
+# Bubalinos
+tabela6918 <- tabela6918 |>
+  dplyr::mutate(total = as.numeric(total),
+                cod = as.numeric(cod)) |>
+  dplyr::rename(animais_grandes_Bubalinos = total,
+                code_muni = cod)|>
+  dplyr::select(code_muni, animais_grandes_Bubalinos)
+
+tabela6918 |> dplyr::glimpse()
+
+##  (animais médios) ----
+### coelhos 
 tabela6934 <- tabela6934 |> 
   dplyr::mutate(total = as.numeric(total),
                 cod = as.numeric(cod)) |>
-  dplyr::rename(animais_medios = total,
+  dplyr::rename(animais_medios_Coelhos = total,
                 code_muni = cod)|>
-  dplyr::select(code_muni, animais_medios)
+  dplyr::select(code_muni, animais_medios_Coelhos)
 
 tabela6934 |> dplyr::glimpse()
 
-## Aquicultura (animais pequenos) ----
+### Caprinos
+tabela6928 <- tabela6928 |> 
+  dplyr::mutate(total = as.numeric(total),
+                cod = as.numeric(cod)) |>
+  dplyr::rename(animais_medios_Caprinos = total,
+                code_muni = cod)|>
+  dplyr::select(code_muni, animais_medios_Caprinos)
 
+tabela6928 |> dplyr::glimpse()
+
+### Ovinos
+tabela6930 <- tabela6930 |> 
+  dplyr::mutate(total = as.numeric(total),
+                cod = as.numeric(cod)) |>
+  dplyr::rename(animais_medios_Ovinos = total,
+                code_muni = cod)|>
+  dplyr::select(code_muni, animais_medios_Ovinos)
+
+tabela6930 |> dplyr::glimpse()
+
+### Suinos
+tabela6926 <- tabela6926 |> 
+  dplyr::mutate(total = as.numeric(total),
+                cod = as.numeric(cod)) |>
+  dplyr::rename(animais_medios_Suinos = total,
+                code_muni = cod)|>
+  dplyr::select(code_muni, animais_medios_Suinos)
+
+tabela6926 |> dplyr::glimpse()
+
+##  (animais pequenos) ----
+### Aquicultura
 tabela6937 <- tabela6937 |> 
   dplyr::mutate(peixes = as.numeric(peixes),
                 cod = as.numeric(cod),
@@ -424,7 +564,37 @@ tabela6937 <- tabela6937 |>
   dplyr::select(-total, -municipio)
 
 tabela6937 |> dplyr::glimpse()
- 
+
+### sericicultura
+tabela6936 <- tabela6936 |> 
+  dplyr::mutate(total = as.numeric(total),
+                cod = as.numeric(cod)) |>
+  dplyr::rename(peq_ani_sericicultura = total,
+                code_muni = cod)|>
+  dplyr::select(code_muni, peq_ani_sericicultura)
+
+tabela6936 |> dplyr::glimpse()
+
+### ranicultura
+tabela6939 <- tabela6939 |> 
+  dplyr::mutate(total = as.numeric(total),
+                cod = as.numeric(cod)) |>
+  dplyr::rename(peq_ani_ranicultura = total,
+                code_muni = cod)|>
+  dplyr::select(code_muni, peq_ani_ranicultura)
+
+tabela6939 |> dplyr::glimpse()
+
+### apicultura 
+tabela6935 <- tabela6935 |> 
+  dplyr::mutate(total = as.numeric(total),
+                cod = as.numeric(cod)) |>
+  dplyr::rename(peq_ani_apicultura = total,
+                code_muni = cod)|>
+  dplyr::select(code_muni, peq_ani_apicultura)
+
+tabela6935 |> dplyr::glimpse()
+
 ## Aves----
 tabela6941 |> dplyr::glimpse()
 
@@ -543,12 +713,35 @@ tabela6955
 tabela6953
 ## FLoricultura
 tabela6951
-## Equinos (animais grandes)
+##  (animais grandes)
+### Equinos
 tabela6921
-## Coelhos (animais médios) 
+### Bovinos
+tabela6910 
+# leite 
+tabela6912
+# Bubalinos
+tabela6918 
+
+##  (animais médios)
+### Coelhos
 tabela6934
-## Aquicultura (animais pequenos)
+### Caprinos
+tabela6928
+### Ovinos
+tabela6930 
+### Suinos
+tabela6926 
+##  (animais pequenos)
+### Aquicultura
 tabela6937
+### sericicultura
+tabela6936 
+### ranicultura
+tabela6939 
+### apicultura 
+tabela6935
+
 ## Aves
 tabela6941
 ## Silvicultura
@@ -560,14 +753,23 @@ tabela6949
 mun <- geobr::read_municipality(year=2020)
 mun <- mun |> sf::st_drop_geometry() |>
   dplyr::select(code_muni, name_muni, abbrev_state)
-
+ 
 Base<- dplyr::full_join(mun, tabela6957, by="code_muni")
 Base<- dplyr::full_join(Base, tabela6955, by="code_muni")
 Base<- dplyr::full_join(Base, tabela6953, by="code_muni")
 Base<- dplyr::full_join(Base, tabela6951, by="code_muni")
+Base<- dplyr::full_join(Base, tabela6910, by="code_muni")
+Base<- dplyr::full_join(Base, tabela6912, by="code_muni")
+Base<- dplyr::full_join(Base, tabela6918, by="code_muni")
 Base<- dplyr::full_join(Base, tabela6921, by="code_muni")
 Base<- dplyr::full_join(Base, tabela6934, by="code_muni")
+Base<- dplyr::full_join(Base, tabela6928, by="code_muni")
+Base<- dplyr::full_join(Base, tabela6930, by="code_muni")
+Base<- dplyr::full_join(Base, tabela6926, by="code_muni")
 Base<- dplyr::full_join(Base, tabela6937, by="code_muni")
+Base<- dplyr::full_join(Base, tabela6936, by="code_muni")
+Base<- dplyr::full_join(Base, tabela6939, by="code_muni")
+Base<- dplyr::full_join(Base, tabela6935, by="code_muni")
 Base<- dplyr::full_join(Base, tabela6941, by="code_muni")
 Base<- dplyr::full_join(Base, tabela6947, by="code_muni")
 Base<- dplyr::full_join(Base, tabela6949, by="code_muni")
